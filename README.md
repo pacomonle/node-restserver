@@ -34,3 +34,9 @@
 # git push heroku master
 # heroku open
 # script start para que heroku sepa donde iniciar la app
+
+# heroku config
+# heroku config:set <nombre-personalizado>
+  heroku config:set MONGO_URI='mongodb+srv://NolitoxD:Aredbull71@cluster0.3pn1s.mongodb.net/cafe'
+# heroku config:get <nombre-personalizado>
+# heroku config:unset <nombre-personalizado>
