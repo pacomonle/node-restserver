@@ -8,11 +8,12 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 // importar libreria para validaciones en el body de la req
 const _ = require('underscore');
-
+// importar middlewares
+const { verificaToken, verificaAdmin_Role } = require('../middlewares/autenticacion');
 
 
 // rutas - se podria hacer con un controller en otro archivo
-router.get('/usuario', function(req, res) {
+router.get('/usuario', verificaToken, (req, res) => {
   
 // parametros opcionales - req.query
     let desde = req.query.desde || 0;
@@ -50,7 +51,7 @@ router.get('/usuario', function(req, res) {
         });
 });
 
-router.post('/usuario', function(req, res) {
+router.post('/usuario', [verificaToken, verificaAdmin_Role], (req, res) => {
 
     const body = req.body;
 
@@ -82,7 +83,7 @@ router.post('/usuario', function(req, res) {
 
 });
 
-router.put('/usuario/:id', function(req, res) {
+router.put('/usuario/:id', [verificaToken, verificaAdmin_Role], (req, res) => {
 
     const id = req.params.id;
     const body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado']);
@@ -107,7 +108,7 @@ router.put('/usuario/:id', function(req, res) {
     })
 });
 
-router.delete('/usuario/:id', function(req, res) {
+router.delete('/usuario/:id', [verificaToken, verificaAdmin_Role],  (req, res) => {
     const id = req.params.id;
 
     // Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {

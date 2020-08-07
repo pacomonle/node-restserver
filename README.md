@@ -40,3 +40,13 @@
   heroku config:set MONGO_URI='mongodb+srv://NolitoxD:Aredbull71@cluster0.3pn1s.mongodb.net/cafe'
 # heroku config:get <nombre-personalizado>
 # heroku config:unset <nombre-personalizado>
+
+#########
+
+jwt -autentication
+
+#########
+
+# npm i jsonwebtoken
+# carpeta middlewares / archivo autenticacion.js
+# todos los datos del usuario van en la req.usuario - decode
