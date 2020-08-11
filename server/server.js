@@ -2,6 +2,8 @@
 require('./config/config');
 // importar libreria mongoose
 const mongoose = require('mongoose');
+//importar path de la libreria path incorporada a nodejs
+const path = require('path');
 // importar libreria express
 const express = require('express');
 const app = express();
@@ -15,6 +17,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
+
+
+// habilitar carpeta public
+app.use(express.static( path.resolve(__dirname, '../public')))
+console.log(path.resolve(__dirname, '../public'))
 
 
 // conectar a las rutas - configuracion global
