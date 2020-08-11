@@ -32,7 +32,7 @@
 #  heroku git:remote -a nodejs-rest-server-nolito
 # git remote o git remote -v
 # git push heroku master
-# heroku open
+# heroku open - abrir pagina web
 # script start para que heroku sepa donde iniciar la app
 
 # heroku config
