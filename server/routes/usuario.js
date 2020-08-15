@@ -6,6 +6,8 @@ const Usuario = require('../models/usuario');
 // importar bcrypt para encriptar passwords
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+// importar jwt
+const jwt = require('jsonwebtoken');
 // importar libreria para validaciones en el body de la req
 const _ = require('underscore');
 // importar middlewares
@@ -71,10 +73,14 @@ router.post('/usuario', [verificaToken, verificaAdmin_Role], (req, res) => {
                 err
             });
         }
+        const token = jwt.sign({
+            usuario: usuarioDB
+        }, process.env.SEED, { expiresIn: process.env.CADUCIDAD_TOKEN });
 
         res.json({
             ok: true,
-            usuario: usuarioDB
+            usuario: usuarioDB,
+            token
         });
 
 
