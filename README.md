@@ -72,3 +72,12 @@ jwt -autentication
   // const domain = payload['hd'];
 }
 verify().catch(console.error);
+
+########
+subida de archivos con express
+# npm i express-fileupload
+
+crear carpeta uploads dentro de la raiz de la carpeta server
+
+
+########
